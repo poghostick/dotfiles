@@ -1,0 +1,67 @@
+[env]
+TERM = "alacritty"
+WINIT_X11_SCALE_FACTOR = "1"
+
+[window]
+dynamic_padding = true
+# decorations = "full"
+decorations="None"
+title = "Alacritty@CachyOS"
+padding.x=6
+padding.y=12
+opacity = 0.95
+decorations_theme_variant = "Dark"
+
+[window.dimensions]
+columns = 100
+lines = 30
+
+[window.class]
+instance = "Alacritty"
+general = "Alacritty"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+size = 12
+
+[font.normal]
+family =  "Hurmit Nerd Font"  # "JetBrainsMono Nerd Font" #
+style = "Regular"
+
+[font.bold]
+family = "Hurmit Nerd Font" #"monospace"
+style = "Bold"
+
+[font.italic]
+family = "Hurmit Nerd Font" #"monospace"
+style = "Italic"
+
+[font.bold_italic]
+family = "Hurmit Nerd Font" #"monospace"
+style = "Bold Italic"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[cursor]
+style = "Block"
+vi_mode_style = "None"
+unfocused_hollow = true
+thickness = 0.15
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+mouse = "Middle"
+action = "PasteSelection"
+
+[general]
+import = ["~/.config/alacritty/themes/ayu_dark.toml"]
+live_config_reload = true
+working_directory = "None"
+
