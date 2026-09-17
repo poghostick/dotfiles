@@ -1,0 +1,68 @@
+//Startup applications
+spawn-at-startup "goldendict" 
+spawn-at-startup "kanshi"
+
+//Application-specific configurations  
+window-rule {
+    match app-id="alacritty-dropdown"
+    open-floating true
+    default-floating-position x=0 y=5  relative-to="top"
+    geometry-corner-radius 0.0 0.0 15.0 15.0
+    clip-to-geometry true
+    focus-ring {
+        width 1
+        active-color "#76946A"
+    }
+    border  {
+        width 1
+    }
+}
+
+
+debug {
+    // Allows notification actions and window activation from Noctalia
+    honor-xdg-activation-with-invalid-serial
+}
+
+// input language and keyboard configurations
+input {
+    keyboard {
+        xkb {
+            //If you want to overwrite your keyboard layout,
+            // uncomment the line below and change the layout accordingly.
+            //layout "us" // Use the American keyboard layout
+            layout "us,ru,cz,am(phonetic)"
+	    options "caps:swapescape"
+    	}
+        numlock // Enable numlock on startup
+    }
+}
+
+//additional keybinds
+binds {
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }  
+    Mod+S {spawn-sh "noctalia msg panel-toggle control-center";}
+    Mod+Comma {spawn-sh "noctalia msg settings-toggle";}
+    Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
+    Mod+F1 {spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle";}
+    //Switch to US layout (layout 0)
+    Mod+Alt+H {switch-layout "0";}
+    //Switch to next layout
+    Mod+Alt+J {switch-layout "prev";}
+    //Switch to previous layout
+    Mod+Alt+K {switch-layout "next";}
+    
+    //Undefined hotkeys from Niri setup
+    Mod+Backslash                       { switch-preset-column-width; }
+    Mod+M                               { maximize-column; }
+    Mod+Shift+H                         { consume-or-expel-window-left; }
+    Mod+Shift+L                         { consume-or-expel-window-right; }
+
+    //Additional applications I use frequently
+    Mod+N  hotkey-overlay-title="Open Notes: Obsidian" { spawn-sh "flatpak run md.obsidian.Obsidian"; }
+    Mod+V  hotkey-overlay-title="Open Editor: VSCode" { spawn "code"; }
+    Mod+Y  hotkey-overlay-title="Open Explorer: yazi" { spawn "alacritty" "-e" "yazi"; }
+    CTRL+F11 {spawn-sh "/home/arsen/.local/bin/gd-lookup"; }
+    F12 { spawn "~/.local/bin/dropdown-terminal"; }
+}
+
